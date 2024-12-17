@@ -1,0 +1,47 @@
+def display1():
+    num1 = int(input("Enter first number: "))
+    print("+\n-\n*\n/")
+    return num1
+def display2():
+    operator = input("pick an operator: ")
+    num2 = int(input("Enter next number: "))
+    return num2,operator
+def display3():
+    nex = input(f"Enter y to continue calculation with {num1} or n to start new calculation or x to exit:  ")
+    nex = nex.lower()
+    return nex
+
+def calculation(a,b):
+    if operator == '+':
+        c = a+b
+        return c
+    if operator == '-':
+        c = a-b
+        return c
+    if operator == '*':
+        c = a*b
+        return c
+    if operator == '/':
+        c = a/b
+        return c
+        
+num1 = display1()
+num2,operator = display2()
+calculation(num1,num2)
+num1 = calculation(num1,num2)
+print(num1)
+nex = display3()
+while nex == 'y' or nex =='n':
+    if nex == 'y':
+        num2,operator = display2()
+        num1 = calculation(num1,num2)
+        print(num1)
+        nex = display3()
+    if nex == 'n':
+            num1 = display1()
+            num2,operator = display2()
+            num1 = calculation(num1,num2)
+            print(num1)
+            nex = display3()
+    if nex == 'x':
+        print("done")
