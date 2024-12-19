@@ -1,0 +1,33 @@
+import random
+number = random.randint(1,50)
+print("let me think ofa number between 1-50")
+def levels():
+    level = (input("Choose level of difficulty ....Type easy or hard: ")).lower()
+    if level == 'hard' :
+        return 5
+    elif level == 'easy':
+        return 10
+    else:
+        print("You choose wrong level ,either it should be hard or easy")
+        return 0
+        
+attempts = levels()
+while attempts == 0:
+        attempts = levels()
+        
+for i in range(attempts,0,-1):
+    print(f"You have {i} attempts remaining to guess the number!")
+    guess = int(input("Make a Guess: "))
+    if guess == number:
+        print("Correct Guess , You won ")
+        break
+    elif guess > number:
+        print("Your guess is too high")
+    elif guess < number:
+        print("Your guess is too low")
+    if i > 1:
+        print("guess again")
+    
+        
+else:
+    print("you are out of guesses.. you lost!!")
