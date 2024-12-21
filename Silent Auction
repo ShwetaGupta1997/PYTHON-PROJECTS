@@ -1,0 +1,19 @@
+import os
+print("**welcome to the Silent Auction programme**")
+silent_auction = {}
+
+while True:
+    key = input("What is  your name ?: ")
+    value = int(input("What is your bid?: "))
+    silent_auction[key] = value
+    nex = input("Are there any others  bidders? Type 'Yes' or 'no': ")
+    nex == nex.lower()
+    if nex == 'yes':
+        os.system('cls')
+    if nex == 'no':
+        max_value = max(silent_auction.values())
+        max_key = max(silent_auction, key=silent_auction.get)
+        print (f"The Winner is {max_key} with a bid of {max_value}")
+        break
+    
+##print(silent_auction)
