@@ -1,0 +1,151 @@
+print("Welcome to Hangman's Game")
+print ( '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''')
+count = 0
+count1 = 0
+num = 0
+a = 0
+string= ''
+list1=[]
+import random
+hangman_diagrams = [
+    
+    # 1st incorrect guess
+    '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''',
+
+    # 2nd incorrect guess
+    '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''',
+
+    # 3rd incorrect guess
+    '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========
+''',
+
+    # 4th incorrect guess
+    '''
+  +---+
+  |   |
+  O   |
+ /|\\  |
+      |
+      |
+=========
+''',
+
+  
+
+    # 5th incorrect guess (game over)
+    '''
+  +---+
+  |   |
+  O   |
+ /|\\  |
+ / \\  |
+      |
+=========
+'''
+]
+
+
+h_words =[
+    ["Cricket", "Football", "Tennis", "Basketball", "Baseball"],
+    ["Apple", "Banana", "Orange", "Mango", "Grapes"],
+    ["Carrot", "Broccoli", "Spinach", "Potato", "Cucumber"],
+    ["New York", "London", "Tokyo", "Paris", "Sydney"],
+    ["Lion", "Elephant", "Giraffe", "Tiger", "Zebra"],
+    ["India", "Canada", "Australia", "Germany", "Brazil"],
+    ["Red", "Blue", "Green", "Yellow", "Black"],
+    ["Guitar", "Piano", "Drums", "Violin", "Trumpet"],
+    ["Inception", "Titanic", "Avatar", "TheDarkKnight", "Forrest Gump"],
+    ["1984", "To Kill a Mockingbird", "MobyDick", "PrideandPrejudice", "TheGreatGatsby"]
+]
+words = random.choice(h_words)
+list_index = h_words.index(words)
+if list_index == 0:
+    print("Hint: The word is a game.")
+elif list_index == 1:
+    print("Hint: The word is a fruit.")
+elif list_index == 2:
+    print("Hint: The word is a vegetable.")
+elif list_index == 3:
+    print("Hint: The word is a city.")
+elif list_index == 4:
+    print("Hint: The word is an animal.")
+elif list_index == 5:
+    print("Hint: The word is a country.")
+elif list_index == 6:
+    print("Hint: The word is a color.")
+elif list_index == 7:
+    print("Hint: The word is a musical instrument.")
+elif list_index == 8:
+    print("Hint: The word is a movie.")
+elif list_index == 9:
+    print("Hint: The word is a book.")
+word = random.choice(words)
+
+word = word.lower()
+#print(word)
+length = len(word)
+print(f"      This word has {length} letter")
+l1 = '_ '*length
+list= l1.split( )
+print('_ '*length)
+for i in range(0,length+7):
+    
+    guess = input("Guess your letter for the word:")
+    if guess not in word:
+        count1 = count1+1
+        print(f"you lose {count1} life ")
+        num = num+1
+        for j in range(num,5):
+            print(hangman_diagrams[j])
+            break
+        
+        if count1>= 4:
+            print("game over you lose")
+            print(f"the correct word is {word.upper()}")
+            break
+    count = 0   
+    if guess in word:
+        if guess in list:
+            continue
+        for letter in word:
+            count = count +1
+            if guess == letter:
+                list[count-1] = letter
+                #print(list)
+                if list[count-1].isalpha():
+                  a = a+1
+        print(list)
+    if a == length:
+        print("Congratulations you Won")
+        break
